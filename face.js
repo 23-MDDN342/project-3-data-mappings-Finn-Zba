@@ -33,23 +33,27 @@ function Face() {
   // these are state variables for a face
   // (your variables should be different!)
   this.detailColour = [204, 136, 17];
-  this.mainColour = [51, 119, 153];
+  this.mainColour = [255]; //white
   this.num_eyes = 2;    // can be either 1 (cyclops) or 2 (two eyes)
   this.eye_shift = -1;   // range is -10 to 10
   this.mouth_size = 1;  // range is 0.5 to 8
 
   this.chinColour = [153, 153, 51]
   this.lipColour = [136, 68, 68]
-  this.eyebrowColour = [119, 85, 17]
+  this.mouthColour = [201, 44, 38] //red
+  this.eyebrowColour = [50, 168, 82]//joker green
+  this.eyeColour = [0,0,0]//black
 
   /*
    * Draw the face with position lists that include:
    *    chin, right_eye, left_eye, right_eyebrow, left_eyebrow
    *    bottom_lip, top_lip, nose_tip, nose_bridge, 
    */  
+
+
   this.draw = function(positions) {
     console.log()
-    // head
+//////////////head//////////////
     ellipseMode(CENTER);
     stroke(stroke_color);
     fill(this.mainColour);
@@ -57,18 +61,18 @@ function Face() {
     noStroke();
 
 
-    // mouth
-    fill(this.detailColour);
+//////////////mouth//////////////
+    fill(this.mouthColour);
     ellipse(segment_average(positions.bottom_lip)[0], segment_average(positions.bottom_lip)[1], 1.36, 0.25 * this.mouth_size);
 
-    // eyebrows
+//////////////eyebrows//////////////
     fill( this.eyebrowColour);
     stroke( this.eyebrowColour);
     strokeWeight(0.08);
     this.draw_segment(positions.left_eyebrow);
     this.draw_segment(positions.right_eyebrow);
 
-    // draw the chin segment using points
+//////////////draw the chin segment using points//////////////
     fill(this.chinColour);
     stroke(this.chinColour);
     this.draw_segment(positions.chin);
@@ -88,11 +92,11 @@ function Face() {
     let left_eye_pos = segment_average(positions.left_eye);
     let right_eye_pos = segment_average(positions.right_eye);
 
-    // eyes
+//////////////eyes//////////////
     noStroke();
     let curEyeShift = 0.04 * this.eye_shift;
     if(this.num_eyes == 2) {
-      fill(this.detailColour);
+      fill(this.eyeColour);
       ellipse(left_eye_pos[0], left_eye_pos[1], 0.5, 0.33);
       ellipse(right_eye_pos[0], right_eye_pos[1], 0.5, 0.33);
 
@@ -104,10 +108,10 @@ function Face() {
       let eyePosX = (left_eye_pos[0] + right_eye_pos[0]) / 2;
       let eyePosY = (left_eye_pos[1] + right_eye_pos[1]) / 2;
 
-      fill(this.detailColour);
+      fill(this.eyeColour);
       ellipse(eyePosX, eyePosY, 0.45, 0.27);
 
-      fill(this.mainColour);
+      fill(this.eyeColour);
       ellipse(eyePosX - 0.1 + curEyeShift, eyePosY, 0.18);
     }
    // fill(0)
