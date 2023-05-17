@@ -121,6 +121,7 @@ function Face() {
 
   // example of a function *inside* the face object.
   // this draws a segment, and do_loop will connect the ends if true
+ //////////////Dots on features//////////////
   this.draw_segment = function(segment, do_loop) {
     for(let i=0; i<segment.length; i++) {
         let px = segment[i][0];

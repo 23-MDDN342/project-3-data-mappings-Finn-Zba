@@ -313,7 +313,7 @@ function DvaDva(tilt_value, eye_value, mouth_value, feather_value, Fdet_value,Br
     ellipse(-8,6,1,1); 
   }
   ////////////// Face shape//////////////
-  stroke(arrweight)
+    stroke(arrweight)
     fill(Bcolor);
     //ellipse(0,-3, 9,9);
     triangle(0,-8,-7,-5,7,-5);
