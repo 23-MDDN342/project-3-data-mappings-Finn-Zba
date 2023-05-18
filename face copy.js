@@ -140,6 +140,7 @@ function Face() {
     }
   };
 
+  ////////////// Factors to edit ////////////
   /* set internal properties based on list numbers 0-100 */
   this.setProperties = function(settings) {
     this.num_eyes = int(map(settings[0], 0, 100, 1, 2));
