@@ -7,7 +7,7 @@
 var DEBUG_MODE = true;
 
 // this can be used to set the number of sliders to show
-var NUM_SLIDERS = 3;
+var NUM_SLIDERS = 5;
 
 // other variables can be in here too
 // here's some examples for colors used
@@ -44,6 +44,8 @@ function Face() {
   this.eyebrowColour = [50, 168, 82]//joker green
   this.eyeColour = [0,0,0]//black
 
+  
+
   /*
    * Draw the face with position lists that include:
    *    chin, right_eye, left_eye, right_eyebrow, left_eyebrow
@@ -54,12 +56,42 @@ function Face() {
   this.draw = function(positions) {
     console.log()
 //////////////head//////////////
-    ellipseMode(CENTER);
-    stroke(stroke_color);
-    fill(this.mainColour);
-    ellipse(segment_average(positions.chin)[0], 0, 3, 4);
-    noStroke();
+    // ellipseMode(CENTER);
+    // stroke(stroke_color);
+    // fill(this.mainColour);
+    // ellipse(segment_average(positions.chin)[0], 0, 3, 4);
+    // noStroke();
+    let face_left = positions.chin[4]; 
+    let face_chin = positions.chin[8];
+    let face_right = positions.chin[16];
+    let right_cheek = positions.chin[2];
+    let left_cheek = positions.chin[4];
 
+    //face code modified variation of Bee Huang Project 3
+    // variated to be more natrual human with joker esk chin
+    beginShape();
+    vertex(face_left[0]-0.4, -0.7)
+    
+    //2nd beezier
+    bezierVertex(-2.5, -4, 2.5, -3.5 , face_right[0], -1);
+
+    //Forehead
+    bezierVertex(face_right[0], face_chin[0], 0, 5, face_left[0]-0.4, -0.7);
+    endShape();
+
+    //shows blush for females
+    //if statement determines if blush is black or white depending on face colour
+    if (this.faceColor == 0 && this.showBlush == 1) {
+      push();
+        fill(50);
+        drawSpots();
+      pop();
+    } else if (this.faceColor == 1 && this.showBlush == 1) {
+      push();
+        fill(0);
+        drawSpots();
+      pop();
+    }
 
 //////////////mouth//////////////
     fill(this.mouthColour);
