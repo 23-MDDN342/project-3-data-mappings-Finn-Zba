@@ -190,7 +190,7 @@ function setup () {
   fill(0);
   textSize(50);
   textAlign(CENTER);
-  text("(waiting for models to load...)", width/2, height/2);
+  text("(Epic models are loading...)", width/2, height/2);
 
   haveStarted = true;
 }
@@ -265,7 +265,7 @@ async function draw () {
       fill(0);
       textSize(50);
       textAlign(CENTER);
-      text("(processing faces...)", width/2, height/2);
+      text("(processing epic faces...)", width/2, height/2);
 
       for(var i=0; i<selfieData.length; i++) {
         var data = selfieData[i];

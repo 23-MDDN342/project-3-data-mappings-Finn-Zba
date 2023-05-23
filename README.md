@@ -2,4 +2,6 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=11116685&assignment_repo_type=AssignmentRepo)
 ## 2023 MDDN342 Assignment 3: Data Mappings
 
-16/05/23 - set up the .vscode proeprly as well as played around with code and labelling it to my understanding. Found and changed the coloring a bit to fit my idea as well as made a duplicate witn my project 2 settings, however this failed, trying again tomorrow.
+note - 
+Face copy.js is the main face
+face.js is project 2 face
