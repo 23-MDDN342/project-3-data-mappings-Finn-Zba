@@ -186,11 +186,12 @@ function setup () {
   // rotation in degrees
   angleMode(DEGREES);
 
-  background(255);
-  fill(0);
+  background(0);
+  fill(0, 143, 17);
   textSize(50);
   textAlign(CENTER);
-  text("(Epic models are loading...)", width/2, height/2);
+  textFont('Terminal')
+  text("(CIA.EVO.FACES-Loading...  )", width/2, height/2);
 
   haveStarted = true;
 }
