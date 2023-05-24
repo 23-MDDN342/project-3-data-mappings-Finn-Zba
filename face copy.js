@@ -56,7 +56,7 @@ function Face() {
   this.draw = function(positions) {
     console.log()
 
-/////////////////////////////////HEAD/////////////////////////////////
+/////////////////////////////////HEAD (Slider 1)/////////////////////////////////
 let face_left = positions.chin[4]; 
 let face_chin = positions.chin[8];
 let face_right = positions.chin[16];
@@ -87,10 +87,48 @@ let left_cheek = positions.chin[4];
     bezierVertex(face_right[0], face_chin[0], 0, 5, face_left[0]-0.4, -0.7);
     endShape();
 
-///////////////////////////////// HEAD END /////////////////////////////////
+///////////////////////////////// HEAD END (slider 1)/////////////////////////////////
+
+/////////////////////////////////FACE DETAIL (slider 9)/////////////////////////////////
 
 
-/////////////////////////////////HAIR/////////////////////////////////
+/////////////////////ALIENS/////////////////////
+if (this.SkinType == 1){
+
+  /////////FEMALE detail/////////
+  if(this.Face_detail == 0){
+    line(-0.85,-1,-0.85,1.5);//left side
+    line(0.85,-1,0.85,1.5);//right side
+  }
+
+  /////////MALE detail/////////
+  else if(this.Face_detail == 1){
+
+  }
+
+
+}
+
+/////////////////////CYBORGS/////////////////////
+if (this.SkinType == 0){
+
+  /////////FEMALE detail/////////
+  if(this.Face_detail == 0){
+  
+
+  }
+
+  /////////MALE Detail/////////
+  else if(this.Face_detail == 1){
+
+    
+  }
+
+}
+
+/////////////////////////////////FACE DETAIL END (slider 9)/////////////////////////////////
+
+/////////////////////////////////HAIR (slider 2)/////////////////////////////////
 
 /////////////////////ALIENS/////////////////////
 if (this.SkinType == 1){
@@ -190,10 +228,10 @@ if (this.SkinType == 0){
     point(1.2,-2.45);
   }
 }
-/////////////////////////////////HAIR END/////////////////////////////////
+/////////////////////////////////HAIR END (slider 2)/////////////////////////////////
 
 
-///////////////////////////////// MOUTH /////////////////////////////////
+///////////////////////////////// MOUTH (slider 3 & 4)/////////////////////////////////
 
 ////////////////ALIEN////////////////
         if(this.SkinType == 1) {
@@ -213,10 +251,10 @@ if (this.SkinType == 0){
           pop();
         }
  
-///////////////////////////////// MOUTH END /////////////////////////////////
+///////////////////////////////// MOUTH END (slider 3 & 4)/////////////////////////////////
 
 
-///////////////////////////////// EYEBROWS /////////////////////////////////
+///////////////////////////////// EYEBROWS (slider 8)/////////////////////////////////
     fill( this.eyebrowColour);
     stroke( this.eyebrowColour);
     strokeWeight(0.08);
@@ -224,20 +262,20 @@ if (this.SkinType == 0){
     this.draw_segment(positions.left_eyebrow);
     this.draw_segment(positions.right_eyebrow);
 
-///////////////////////////////// EYEBROWS END /////////////////////////////////
+///////////////////////////////// EYEBROWS END (slider 8)/////////////////////////////////
 
 
 //////////////draw the chin segment using points//////////////
     fill(this.chinColour);
     stroke(this.chinColour);
-    this.draw_segment(positions.chin);
+    //this.draw_segment(positions.chin);
 
-///////////////////////////////// NOSE /////////////////////////////////
+///////////////////////////////// NOSE (slider 7)/////////////////////////////////
     fill(this.Cyborg_tertiary); //grey
     stroke(this.Cyborg_tertiary);//grey
     this.draw_segment(positions.nose_bridge);
     this.draw_segment(positions.nose_tip);
-///////////////////////////////// NOSE END /////////////////////////////////
+///////////////////////////////// NOSE END (slider 7) /////////////////////////////////
 
 
 ///////////////////////////////// LIPS /////////////////////////////////    
@@ -251,7 +289,7 @@ if (this.SkinType == 0){
 ///////////////////////////////// LIPS END /////////////////////////////////
 
 
-///////////////////////////////// EYES /////////////////////////////////
+///////////////////////////////// EYES (slider 5 & 10)/////////////////////////////////
 let left_eye_pos = segment_average(positions.left_eye);
 let right_eye_pos = segment_average(positions.right_eye);
     noStroke();
@@ -284,7 +322,7 @@ let right_eye_pos = segment_average(positions.right_eye);
     }
     }
   }
-///////////////////////////////// EYES END /////////////////////////////////
+///////////////////////////////// EYES END (slider 5 & 10)/////////////////////////////////
 
   // example of a function *inside* the face object.
   // this draws a segment, and do_loop will connect the ends if true
@@ -316,6 +354,7 @@ let right_eye_pos = segment_average(positions.right_eye);
     this.mouth_size = map(settings[2], 0, 100, 0.5, 4);
     this.pupil_Size = map(settings[4], 0, 100, 0.2, 0.4);// pupil size
     this.eyebrow = int(map(settings[5], 0, 100, 1, 2));
+    this.Face_detail = int(map(settings[8], 0, 100, 0, 1));
   }
 
   /* get internal properties as list of numbers 0-100 */
@@ -326,6 +365,8 @@ let right_eye_pos = segment_average(positions.right_eye);
     settings[2] = map(this.mouth_size, 0, 5, 0, 50); //mouth size
     settings[4] = map(this.pupil_Size, 0.4, 0.2, 1, 100); // pupil size
     settings[5] = map(this.eyebrow, 1, 2, 0, 100);
+    settings[8] = map(this.SkinType, 0, 1, 0, 100); //male or female
+
     return settings;
   }
 }
