@@ -45,7 +45,7 @@ function Face() {
   this.Alien_secondary = [207, 29, 106]; //pink
   this.Cyborg_primary = [210, 210, 210]; //grey
   this.Cyborg_secondary = [28, 182, 182]; //blue
-  
+  this.Cyborg_tertiary = [62, 69, 69]; //other grey
   
   /*
    * Draw the face with position lists that include:
@@ -55,8 +55,6 @@ function Face() {
 
   this.draw = function(positions) {
     console.log()
-
-
 
 /////////////////////////////////HEAD/////////////////////////////////
 let face_left = positions.chin[4]; 
@@ -138,26 +136,58 @@ if (this.SkinType == 1){
 
 /////////////////////CYBORGS/////////////////////
 if (this.SkinType == 0){
-
   /////////FEMALE HAIR/////////
   if(this.head_Type == 0){
-    ellipse(0,-2,1,1);
+ 
+
   }
 
   /////////MALE HAIR/////////
   else if(this.head_Type == 1){
-    fill(0);
-    ellipse(0,-2,1,1);
-  }
+    //line
+    line(0,-3,0,-2.1); //top line
+    line(-1.8,-1.8,0,-2.1); //left line
+    line(1.8,-1.8,0,-2.1); //right line
+    //line
+    line(0,-3,0,-2.2); //top line
+    strokeWeight(0.15);
 
+    fill(this.Cyborg_secondary);
+    ellipse(0,-2.1,0.6,0.6); //main ellipse
+    strokeWeight(0.05);
+    fill(this.Cyborg_secondary);
+
+    //circ
+    circle(0,-3,0.3); //top center circle
+    circle(1.9,-1.8,0.3); //right circle
+    circle(-1.9,-1.8,0.3); //left circle 
+    
+  }
   /////////BALD&HATS/////////
   else if(this.head_Type == 2){
-    fill(100,200,23);
-    ellipse(0,-2,1,1);
+    fill(this.Cyborg_tertiary);
+    ellipse(0,-2.5,2.8,1);
+    strokeWeight(0.1);
+    stroke(0);
+    point(0,-2.1) //center bottom
+    point(0,-2.9) //center top
+    //left
+    point(-0.5,-2.85);
+    point(-0.9, -2.75);
+    point(-1.2,-2.65); 
+    point(-0.5,-2.15);
+    point(-0.9, -2.25);
+    point(-1.2,-2.45); 
+
+    //right
+    point(0.5,-2.85);
+    point(0.9, -2.75);
+    point(1.2,-2.65); 
+    point(0.5,-2.15);
+    point(0.9, -2.25);
+    point(1.2,-2.45);
   }
-
 }
-
 /////////////////////////////////HAIR END/////////////////////////////////
 
 
@@ -201,8 +231,8 @@ if (this.SkinType == 0){
     this.draw_segment(positions.chin);
 
 ///////////////////////////////// NOSE /////////////////////////////////
-    fill(62, 69, 69); //grey
-    stroke(62, 69, 69);//grey
+    fill(this.Cyborg_tertiary); //grey
+    stroke(this.Cyborg_tertiary);//grey
     this.draw_segment(positions.nose_bridge);
     this.draw_segment(positions.nose_tip);
 ///////////////////////////////// NOSE END /////////////////////////////////
