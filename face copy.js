@@ -349,24 +349,31 @@ let right_eye_pos = segment_average(positions.right_eye);
 ///////////////////////////////// MAPPING /////////////////////////////////
   /* set internal properties based on list numbers 0-100 */
   this.setProperties = function(settings) {
-    this.SkinType = int(map(settings[0], 0, 100, 0, 1));
-    this.head_Type = int(map(settings[1], 0, 100, 0, 2));
-    this.mouth_size = map(settings[2], 0, 100, 0.5, 4);
+    this.SkinType = int(map(settings[0], 0, 100, 0, 1)); // metal or skin
+    this.head_Type = int(map(settings[1], 0, 100, 0, 2)); // head draw
+    this.mouth_size = map(settings[2], 0, 100, 0.5, 4); // Mouth Y
+    this.mouth_sizeX = map(settings[3], 0, 100, 0.5, 4); // mouth X
     this.pupil_Size = map(settings[4], 0, 100, 0.2, 0.4);// pupil size
-    this.eyebrow = int(map(settings[5], 0, 100, 1, 2));
-    this.Face_detail = int(map(settings[8], 0, 100, 0, 1));
+    this.cheeck = int(map(settings[5], 0, 100, 1, 2)); // check detail (female only)
+    this.Nose = int(map(settings[6], 0, 100, 1, 2)); //Nose Y
+    this.eyebrow = int(map(settings[7], 0, 100, 1, 2)); // eyebrow Y
+    this.Face_detail = int(map(settings[8], 0, 100, 0, 1)); //male or female details
+    this.pupX = map(settings[9], 0, 100, 0.5, 4); //pupil X
   }
 
   /* get internal properties as list of numbers 0-100 */
   this.getProperties = function() {
     let settings = new Array(3);
     settings[0] = map(this.SkinType, 0, 1, 0, 100); //metal or skin
-    settings[1] = map(this.head_Type, 0, 2, 0, 100); //
-    settings[2] = map(this.mouth_size, 0, 5, 0, 50); //mouth size
+    settings[1] = map(this.head_Type, 0, 2, 0, 100); //head draw
+    settings[2] = map(this.mouth_size, 0, 5, 0, 50); //mouth size Y
+    settings[3] = map(this.mouth_sizeX, 0, 5, 0, 50); //mouth size X
     settings[4] = map(this.pupil_Size, 0.4, 0.2, 1, 100); // pupil size
-    settings[5] = map(this.eyebrow, 1, 2, 0, 100);
-    settings[8] = map(this.SkinType, 0, 1, 0, 100); //male or female
-
+    settings[5] = map(this.cheeck, 1, 2, 0, 100); //cheeck detail (female only)
+    settings[6] = map(this.Nose, 1, 2, 0, 100); //nose Y
+    settings[7] = map(this.eyebrow, 1, 2, 0, 100); //eyebrow Y
+    settings[8] = map(this.Face_detail, 0, 1, 0, 100); //male or female details
+    settings[9] = map(this.pupX, 0, 5, 0, 50); //pupil X
     return settings;
   }
 }
