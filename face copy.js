@@ -7,7 +7,7 @@
 var DEBUG_MODE = false;
 
 // this can be used to set the number of sliders to show
-var NUM_SLIDERS = 8;
+var NUM_SLIDERS = 10;
 
 const stroke_color = [95, 52, 8];
 
@@ -138,12 +138,6 @@ if (this.SkinType == 1){
 if (this.SkinType == 0){
   /////////FEMALE HAIR/////////
   if(this.head_Type == 0){
- 
-
-  }
-
-  /////////MALE HAIR/////////
-  else if(this.head_Type == 1){
     //line
     line(0,-3,0,-2.1); //top line
     line(-1.8,-1.8,0,-2.1); //left line
@@ -161,6 +155,14 @@ if (this.SkinType == 0){
     circle(0,-3,0.3); //top center circle
     circle(1.9,-1.8,0.3); //right circle
     circle(-1.9,-1.8,0.3); //left circle 
+
+  }
+
+  /////////MALE HAIR/////////
+  else if(this.head_Type == 1){
+    fill(this.Cyborg_secondary);
+    strokeWeight(0.1);
+    quad(-0.7,-2.6,0.7,-2.6,0.4,-2,-0.4,-2);
     
   }
   /////////BALD&HATS/////////
