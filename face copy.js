@@ -9,10 +9,6 @@ var DEBUG_MODE = false;
 // this can be used to set the number of sliders to show
 var NUM_SLIDERS = 8;
 
-// other variables can be in here too
-// here's some examples for colors used
-
-
 const stroke_color = [95, 52, 8];
 
 // example of a global function
@@ -43,30 +39,26 @@ function Face() {
   this.mouthColour = [201, 44, 38] //red
   this.eyebrowColour = [62, 69, 69]//Grey
   this.eyeColour = [0,0,0]//black
-  this.pupil_Size = 0.6; 
+  this.pupil_Size = 0.6;
+  this.head_Type = 0 
   
   /*
    * Draw the face with position lists that include:
    *    chin, right_eye, left_eye, right_eyebrow, left_eyebrow
    *    bottom_lip, top_lip, nose_tip, nose_bridge, 
-   */  
-
+   */ 
 
   this.draw = function(positions) {
     console.log()
 
-  
+
+
 /////////////////////////////////HEAD/////////////////////////////////
-    // ellipseMode(CENTER);
-    // stroke(stroke_color);
-    // fill(this.mainColour);
-    // ellipse(segment_average(positions.chin)[0], 0, 3, 4);
-    // noStroke();
-    let face_left = positions.chin[4]; 
-    let face_chin = positions.chin[8];
-    let face_right = positions.chin[16];
-    let right_cheek = positions.chin[2];
-    let left_cheek = positions.chin[4];
+let face_left = positions.chin[4]; 
+let face_chin = positions.chin[8];
+let face_right = positions.chin[16];
+let right_cheek = positions.chin[2];
+let left_cheek = positions.chin[4];
 
         if(this.SkinType == 1) {
           strokeWeight(0.2);
@@ -78,7 +70,7 @@ function Face() {
           fill(210, 210, 210); //blue
         }
 
-    //face code modified variation of Bee Huang Project 3
+    //face shape code modified variation of Bee Huang Project 3!!!
     // variated to be more natrual human with joker esk chin
     beginShape();
     strokeWeight(0.05);
@@ -95,13 +87,65 @@ function Face() {
 ///////////////////////////////// HEAD END /////////////////////////////////
 
 
+/////////////////////////////////HAIR/////////////////////////////////
+
+/////////////////////ALIENS/////////////////////
+if (this.SkinType == 1){
+
+  /////////FEMALE HAIR/////////
+  if(this.head_Type == 0){
+    rect(0,-2,1,1);
+  }
+
+  /////////MALE HAIR/////////
+  else if(this.head_Type == 1){
+    fill(0);
+    rect(0,-2,1,1);
+  }
+
+  /////////BALD&HATS/////////
+  else if(this.head_Type == 2){
+    fill(100,200,23);
+    rect(0,-2,1,1);
+  }
+
+}
+
+/////////////////////CYBORGS/////////////////////
+if (this.SkinType == 0){
+
+  /////////FEMALE HAIR/////////
+  if(this.head_Type == 0){
+    ellipse(0,-2,1,1);
+  }
+
+  /////////MALE HAIR/////////
+  else if(this.head_Type == 1){
+    fill(0);
+    ellipse(0,-2,1,1);
+  }
+
+  /////////BALD&HATS/////////
+  else if(this.head_Type == 2){
+    fill(100,200,23);
+    ellipse(0,-2,1,1);
+  }
+
+}
+
+/////////////////////////////////HAIR END/////////////////////////////////
+
+
 ///////////////////////////////// MOUTH /////////////////////////////////
+
+////////////////ALIEN////////////////
         if(this.SkinType == 1) {
           strokeWeight(0.1);
           stroke(0);
           fill(207, 29, 106); //pink
           ellipse(segment_average(positions.bottom_lip)[0], segment_average(positions.bottom_lip)[1], 1.36, 0.25 * this.mouth_size);
            
+////////////////CYBORG////////////////
         } else if (this.SkinType == 0) {
           strokeWeight(0.1);
           stroke(0);
@@ -112,7 +156,6 @@ function Face() {
           pop();
         }
  
-
 ///////////////////////////////// MOUTH END /////////////////////////////////
 
 
@@ -121,12 +164,8 @@ function Face() {
     stroke( this.eyebrowColour);
     strokeWeight(0.08);
 
-
-
-    
     this.draw_segment(positions.left_eyebrow);
     this.draw_segment(positions.right_eyebrow);
-
 
 ///////////////////////////////// EYEBROWS END /////////////////////////////////
 
@@ -149,11 +188,9 @@ function Face() {
 
     fill(this.lipColour);
     stroke(this.lipColour);
-    //this.draw_segment(positions.top_lip);
-    //this.draw_segment(positions.bottom_lip);
+    //this.draw_segment(positions.top_lip); //default dotted lips
+    //this.draw_segment(positions.bottom_lip); //defult dotted lips
 
-
-    
 ///////////////////////////////// LIPS END /////////////////////////////////
 
 
@@ -168,6 +205,7 @@ let right_eye_pos = segment_average(positions.right_eye);
       ellipse(left_eye_pos[0], left_eye_pos[1], 0.6, 0.53);
       ellipse(right_eye_pos[0], right_eye_pos[1], 0.6, 0.53);
 
+////////////////ALIEN////////////////
      if(this.SkinType == 1) {
       strokeWeight(0);
       stroke(0);
@@ -175,6 +213,7 @@ let right_eye_pos = segment_average(positions.right_eye);
       ellipse(-0.85,-0.9,this.pupil_Size,this.pupil_Size);
       ellipse(0.85,-0.9,this.pupil_Size,this.pupil_Size);
 
+////////////////CYBORG////////////////
     } else if (this.SkinType == 0) {
       strokeWeight(0);
       stroke(0);
@@ -186,15 +225,13 @@ let right_eye_pos = segment_average(positions.right_eye);
       rect(0.80,-1,this.pupil_Size,this.pupil_Size);
       pop();
     }
-
     }
-
   }
 ///////////////////////////////// EYES END /////////////////////////////////
 
   // example of a function *inside* the face object.
   // this draws a segment, and do_loop will connect the ends if true
- //////////////Dots on features//////////////
+/////////////////////////////////DOTTED FEATURES/////////////////////////////////
   this.draw_segment = function(segment, do_loop) {
     for(let i=0; i<segment.length; i++) {
         let px = segment[i][0];
@@ -212,12 +249,13 @@ let right_eye_pos = segment_average(positions.right_eye);
         }
     }
   };
+/////////////////////////////////DOTTED FEATURES END/////////////////////////////////
 
 ///////////////////////////////// MAPPING /////////////////////////////////
   /* set internal properties based on list numbers 0-100 */
   this.setProperties = function(settings) {
     this.SkinType = int(map(settings[0], 0, 100, 0, 1));
-    this.eye_shift = map(settings[1], 0, 100, -2, 2);
+    this.head_Type = int(map(settings[1], 0, 100, 0, 2));
     this.mouth_size = map(settings[2], 0, 100, 0.5, 4);
     this.pupil_Size = map(settings[4], 0, 100, 0.2, 0.4);// pupil size
     this.eyebrow = int(map(settings[5], 0, 100, 1, 2));
@@ -227,7 +265,7 @@ let right_eye_pos = segment_average(positions.right_eye);
   this.getProperties = function() {
     let settings = new Array(3);
     settings[0] = map(this.SkinType, 0, 1, 0, 100); //metal or skin
-    settings[1] = map(this.eye_shift, -2, 2, 0, 100); //
+    settings[1] = map(this.head_Type, 0, 2, 0, 100); //
     settings[2] = map(this.mouth_size, 0, 5, 0, 50); //mouth size
     settings[4] = map(this.pupil_Size, 0.4, 0.2, 1, 100); // pupil size
     settings[5] = map(this.eyebrow, 1, 2, 0, 100);
