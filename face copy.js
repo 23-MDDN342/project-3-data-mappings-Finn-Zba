@@ -99,18 +99,39 @@ if (this.SkinType == 1){
 
   /////////FEMALE HAIR/////////
   if(this.head_Type == 0){
-    rect(0,-2,1,1);
+    fill(this.Alien_secondary);
+    ellipse(0,-2.7,0.3,0.3);//center
+
+    //right side
+    ellipse(0.5,-2.6,0.2,0.2);
+    ellipse(0.9,-2.4,0.2,0.2);
+    ellipse(1.2,-2.2,0.2,0.2);
+    ellipse(1.5,-2,0.2,0.2);
+
+    //left side
+    ellipse(-0.5,-2.6,0.2,0.2);
+    ellipse(-0.9,-2.4,0.2,0.2);
+    ellipse(-1.2,-2.2,0.2,0.2);
+    ellipse(-1.5,-2,0.2,0.2);
   }
 
   /////////MALE HAIR/////////
   else if(this.head_Type == 1){
-    fill(0);
-    rect(0,-2,1,1);
+    fill(this.Alien_secondary);
+    line(-1,-2.1,0,-2.7);//left
+    line(1,-2.1,0,-2.7);//right
+    ellipse(0,-2.7,0.4,0.4); //center
+    ellipse(1,-2.1,0.2,0.2); //right
+    ellipse(-1,-2.1,0.2,0.2); //left
   }
 
   /////////BALD&HATS/////////
   else if(this.head_Type == 2){
-    fill(0);
+    fill(this.Alien_secondary);
+    line(-1,-2.1,1,-2.1);
+    ellipse(0,-2.1,0.4,0.4); //center
+    ellipse(1,-2.1,0.3,0.3); //right
+    ellipse(-1,-2.1,0.3,0.3); //left
   }
 
 }
