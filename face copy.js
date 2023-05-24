@@ -41,6 +41,11 @@ function Face() {
   this.eyeColour = [0,0,0]//black
   this.pupil_Size = 0.6;
   this.head_Type = 0 
+  this.Alien_primary = [118, 188, 101]; //green
+  this.Alien_secondary = [207, 29, 106]; //pink
+  this.Cyborg_primary = [210, 210, 210]; //grey
+  this.Cyborg_secondary = [28, 182, 182]; //blue
+  
   
   /*
    * Draw the face with position lists that include:
@@ -63,11 +68,11 @@ let left_cheek = positions.chin[4];
         if(this.SkinType == 1) {
           strokeWeight(0.2);
           stroke(0);
-          fill(118, 188, 101); //pink
+          fill(this.Alien_primary); //green
         } else if (this.SkinType == 0) {
           strokeWeight(0.2);
           stroke(0);
-          fill(210, 210, 210); //blue
+          fill(this.Cyborg_primary); //grey
         }
 
     //face shape code modified variation of Bee Huang Project 3!!!
@@ -105,8 +110,7 @@ if (this.SkinType == 1){
 
   /////////BALD&HATS/////////
   else if(this.head_Type == 2){
-    fill(100,200,23);
-    rect(0,-2,1,1);
+    fill(0);
   }
 
 }
@@ -142,14 +146,14 @@ if (this.SkinType == 0){
         if(this.SkinType == 1) {
           strokeWeight(0.1);
           stroke(0);
-          fill(207, 29, 106); //pink
+          fill(this.Alien_secondary); //pink
           ellipse(segment_average(positions.bottom_lip)[0], segment_average(positions.bottom_lip)[1], 1.36, 0.25 * this.mouth_size);
            
 ////////////////CYBORG////////////////
         } else if (this.SkinType == 0) {
           strokeWeight(0.1);
           stroke(0);
-          fill(28, 182, 182);// blue
+          fill(this.Cyborg_secondary);// blue
           push();
           translate(-0.4,0);
           rect(segment_average(positions.bottom_lip)[0], segment_average(positions.bottom_lip)[1], 1, 0.25 * this.mouth_size);
@@ -209,7 +213,7 @@ let right_eye_pos = segment_average(positions.right_eye);
      if(this.SkinType == 1) {
       strokeWeight(0);
       stroke(0);
-      fill(207, 29, 106); //pink
+      fill(this.Alien_secondary); //pink
       ellipse(-0.85,-0.9,this.pupil_Size,this.pupil_Size);
       ellipse(0.85,-0.9,this.pupil_Size,this.pupil_Size);
 
@@ -217,7 +221,7 @@ let right_eye_pos = segment_average(positions.right_eye);
     } else if (this.SkinType == 0) {
       strokeWeight(0);
       stroke(0);
-      fill(28, 182, 182); //blue
+      fill(this.Cyborg_secondary); //blue
       push();
       //angleMode(DEGREES);
       //rotate(45);

@@ -7,7 +7,7 @@
 var DEBUG_MODE = false;
 
 // this can be used to set the number of sliders to show
-var NUM_SLIDERS = 6;
+var NUM_SLIDERS = 7;
 
 // other variables can be in here too
 // here's some examples for colors used
