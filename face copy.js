@@ -95,15 +95,19 @@ let left_cheek = positions.chin[4];
 /////////////////////ALIENS/////////////////////
 if (this.SkinType == 1){
 
-  /////////FEMALE detail/////////
+  /////////FEMALE detail (eye decals) /////////
   if(this.Face_detail == 0){
     line(-0.85,-1,-0.85,1.5);//left side
     line(0.85,-1,0.85,1.5);//right side
   }
 
-  /////////MALE detail/////////
+  /////////MALE detail (eye paint) /////////
   else if(this.Face_detail == 1){
-
+    fill(this.Alien_secondary); // pink
+    push();
+    strokeWeight(0);
+    rect(-1.93,-1,3.75,0.1);
+    pop();
   }
 
 
@@ -133,7 +137,7 @@ if (this.SkinType == 0){
 /////////////////////ALIENS/////////////////////
 if (this.SkinType == 1){
 
-  /////////FEMALE HAIR/////////
+  /////////FEMALE HAIR (head pores)/////////
   if(this.head_Type == 0){
     fill(this.Alien_secondary);
     ellipse(0,-2.7,0.3,0.3);//center
@@ -151,7 +155,7 @@ if (this.SkinType == 1){
     ellipse(-1.5,-2,0.2,0.2);
   }
 
-  /////////MALE HAIR/////////
+  /////////MALE HAIR (encanced pores)/////////
   else if(this.head_Type == 1){
     fill(this.Alien_secondary);
     line(-1,-2.1,0,-2.7);//left
@@ -161,7 +165,7 @@ if (this.SkinType == 1){
     ellipse(-1,-2.1,0.2,0.2); //left
   }
 
-  /////////BALD&HATS/////////
+  /////////BALD&HATS (cleaned pores)/////////
   else if(this.head_Type == 2){
     fill(this.Alien_secondary);
     line(-1,-2.1,1,-2.1);
@@ -174,7 +178,7 @@ if (this.SkinType == 1){
 
 /////////////////////CYBORGS/////////////////////
 if (this.SkinType == 0){
-  /////////FEMALE HAIR/////////
+  /////////FEMALE HAIR (celebral inhibitor)/////////
   if(this.head_Type == 0){
     //line
     line(0,-3,0,-2.1); //top line
@@ -196,14 +200,14 @@ if (this.SkinType == 0){
 
   }
 
-  /////////MALE HAIR/////////
+  /////////MALE HAIR (power cap)/////////
   else if(this.head_Type == 1){
     fill(this.Cyborg_secondary);
     strokeWeight(0.1);
     quad(-0.7,-2.6,0.7,-2.6,0.4,-2,-0.4,-2);
     
   }
-  /////////BALD&HATS/////////
+  /////////BALD&HATS (wireing dome)/////////
   else if(this.head_Type == 2){
     fill(this.Cyborg_tertiary);
     ellipse(0,-2.5,2.8,1);
@@ -238,7 +242,7 @@ if (this.SkinType == 0){
           strokeWeight(0.1);
           stroke(0);
           fill(this.Alien_secondary); //pink
-          ellipse(segment_average(positions.bottom_lip)[0], segment_average(positions.bottom_lip)[1], 1.36, 0.25 * this.mouth_size);
+          ellipse(segment_average(positions.bottom_lip)[0], segment_average(positions.bottom_lip)[1], 1.36 * this.mouth_sizeX, 0.25 * this.mouth_size);
            
 ////////////////CYBORG////////////////
         } else if (this.SkinType == 0) {
@@ -247,7 +251,7 @@ if (this.SkinType == 0){
           fill(this.Cyborg_secondary);// blue
           push();
           translate(-0.4,0);
-          rect(segment_average(positions.bottom_lip)[0], segment_average(positions.bottom_lip)[1], 1, 0.25 * this.mouth_size);
+          rect(segment_average(positions.bottom_lip)[0], segment_average(positions.bottom_lip)[1], 1 * this.mouth_sizeX, 0.25 * this.mouth_size);
           pop();
         }
  
@@ -258,7 +262,6 @@ if (this.SkinType == 0){
     fill( this.eyebrowColour);
     stroke( this.eyebrowColour);
     strokeWeight(0.08);
-
     this.draw_segment(positions.left_eyebrow);
     this.draw_segment(positions.right_eyebrow);
 
@@ -352,7 +355,7 @@ let right_eye_pos = segment_average(positions.right_eye);
     this.SkinType = int(map(settings[0], 0, 100, 0, 1)); // metal or skin
     this.head_Type = int(map(settings[1], 0, 100, 0, 2)); // head draw
     this.mouth_size = map(settings[2], 0, 100, 0.5, 4); // Mouth Y
-    this.mouth_sizeX = map(settings[3], 0, 100, 0.5, 4); // mouth X
+    this.mouth_sizeX = map(settings[3], 0, 100, 0, 1); // mouth X
     this.pupil_Size = map(settings[4], 0, 100, 0.2, 0.4);// pupil size
     this.cheeck = int(map(settings[5], 0, 100, 1, 2)); // check detail (female only)
     this.Nose = int(map(settings[6], 0, 100, 1, 2)); //Nose Y
@@ -367,7 +370,7 @@ let right_eye_pos = segment_average(positions.right_eye);
     settings[0] = map(this.SkinType, 0, 1, 0, 100); //metal or skin
     settings[1] = map(this.head_Type, 0, 2, 0, 100); //head draw
     settings[2] = map(this.mouth_size, 0, 5, 0, 50); //mouth size Y
-    settings[3] = map(this.mouth_sizeX, 0, 5, 0, 50); //mouth size X
+    settings[3] = map(this.mouth_sizeX, 0, 1, 0, 50); //mouth size X
     settings[4] = map(this.pupil_Size, 0.4, 0.2, 1, 100); // pupil size
     settings[5] = map(this.cheeck, 1, 2, 0, 100); //cheeck detail (female only)
     settings[6] = map(this.Nose, 1, 2, 0, 100); //nose Y
