@@ -186,7 +186,6 @@ if (this.SkinType == 0){
   /////////FEMALE HAIR (celebral inhibitor)/////////
   if(this.head_Type == 0){
     //line
-    line(0,-3,0,-2.1); //top line
     line(-1.8,-1.8,0,-2.1); //left line
     line(1.8,-1.8,0,-2.1); //right line
     //line
@@ -208,8 +207,26 @@ if (this.SkinType == 0){
   /////////MALE HAIR (power cap)/////////
   else if(this.head_Type == 1){
     fill(this.Cyborg_secondary);
-    strokeWeight(0.1);
-    quad(-0.7,-2.6,0.7,-2.6,0.4,-2,-0.4,-2);
+    //strokeWeight(0.1);
+    //line(-1.8,-1.8,0,-2.1); //left line
+    //line(1.8,-1.8,0,-2.1); //right line
+    //line
+    //line(0,-3,0,-2.2); //top line
+    //strokeWeight(0.15);
+
+    fill(this.Cyborg_secondary);
+    ellipse(0,-2,0.5,0.5); //main ellipse
+    strokeWeight(0.05);
+    fill(this.Cyborg_secondary);
+    circle(0.5,-1.8,0.2); //right circle
+    circle(0.4,-2.3,0.2); //right circle    
+    circle(0,-1.5,0.2); //bottom center circle
+    circle(-0.5,-1.8,0.2); //left circle
+    circle(-0.4,-2.3,0.2); //left circle   
+    circle(0,-2,0.2); //top center circle
+    circle(0,-2.5,0.2); //bottom center circle
+    //circle(-1.9,-1.8,0.3); //left circle 
+    //quad(-0.7,-2.6,0.7,-2.6,0.4,-2,-0.4,-2);
     
   }
   /////////BALD&HATS (wireing dome)/////////
