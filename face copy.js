@@ -7,7 +7,7 @@
 var DEBUG_MODE = false;
 
 // this can be used to set the number of sliders to show
-var NUM_SLIDERS = 10;
+var NUM_SLIDERS = 7;
 
 const stroke_color = [95, 52, 8];
 
@@ -45,8 +45,7 @@ function Face() {
   this.Cyborg_primary = [210, 210, 210]; //grey
   this.Cyborg_secondary = [28, 182, 182]; //blue
   this.Cyborg_tertiary = [62, 69, 69]; //other grey
-
-  
+ 
   /*
    * Draw the face with position lists that include:
    *    chin, right_eye, left_eye, right_eyebrow, left_eyebrow
@@ -126,12 +125,13 @@ if (this.SkinType == 0){
   line(0.9,-0.8,0.9,-0.5); //right
   circle(0.9,-0.37,0.2);//right
   ellipse(-0.85,-0.37,0.2);//right
-
   }
 
   /////////MALE Detail/////////
   else if(this.Face_detail == 1){
-    
+    fill(0);
+    circle(-1,-0.7,0.3);
+    circle(1,-0.7,0.3); 
     
   }
 }
@@ -179,7 +179,6 @@ if (this.SkinType == 1){
     ellipse(1,-2.1,0.3,0.3); //right
     ellipse(-1,-2.1,0.3,0.3); //left
   }
-
 }
 
 /////////////////////CYBORGS/////////////////////
@@ -268,8 +267,9 @@ if (this.SkinType == 0){
     fill( this.eyebrowColour);
     stroke( this.eyebrowColour);
     strokeWeight(0.08);
-    this.draw_segment(positions.left_eyebrow);
-    this.draw_segment(positions.right_eyebrow);
+
+    //this.draw_segment(positions.left_eyebrow);
+    //this.draw_segment(positions.right_eyebrow);
 
 ///////////////////////////////// EYEBROWS END (slider 8)/////////////////////////////////
 
@@ -320,15 +320,15 @@ let right_eye_pos = segment_average(positions.right_eye);
 
 ////////////////CYBORG////////////////
     } else if (this.SkinType == 0) {
-      strokeWeight(0);
-      stroke(0);
-      fill(this.Cyborg_secondary); //blue
-      push();
-      //angleMode(DEGREES);
-      //rotate(45);
-      rect(-0.95,-1,this.pupil_Size,this.pupil_Size);
-      rect(0.80,-1,this.pupil_Size,this.pupil_Size);
-      pop();
+      // strokeWeight(0);
+      // stroke(0);
+      // fill(this.Cyborg_secondary); //blue
+      // push();
+      // //angleMode(DEGREES);
+      // //rotate(45);
+      // rect(this.pupX,-1,this.pupil_Size,this.pupil_Size);
+      // rect(this.pupX,-1,this.pupil_Size,this.pupil_Size);
+      // pop();
     }
     }
   }
@@ -353,7 +353,7 @@ let right_eye_pos = segment_average(positions.right_eye);
           line(px, py, nx, ny);
         }
     }
-  };
+  }
 /////////////////////////////////DOTTED FEATURES END/////////////////////////////////
 
 ///////////////////////////////// MAPPING /////////////////////////////////
@@ -363,12 +363,9 @@ let right_eye_pos = segment_average(positions.right_eye);
     this.head_Type = int(map(settings[1], 0, 100, 0, 2)); // head draw
     this.mouth_size = map(settings[2], 0, 100, 0.5, 4); // Mouth Y
     this.mouth_sizeX = map(settings[3], 0, 100, 0, 1); // mouth X
-    this.pupil_Size = map(settings[4], 0, 100, 0.2, 0.4);// pupil size
-    this.cheeck = int(map(settings[5], 0, 100, 1, 2)); // check detail (female only)
-    this.Nose = int(map(settings[6], 0, 100, 1, 2)); //Nose Y
-    this.eyebrow = int(map(settings[7], 0, 100, 1, 2)); // eyebrow Y
-    this.Face_detail = int(map(settings[8], 0, 100, 0, 1)); //male or female details
-    this.pupX = map(settings[9], 0, 100, 0.5, 4); //pupil X
+    this.pupil_Size = map(settings[4], 0, 100, 0.1, 0.2);// pupil size
+    this.Face_detail = int(map(settings[5], 0, 100, 0, 1)); //male or female details
+    this.pupX = map(settings[6], 0, 100, 0.5, 4); //pupil X
   }
 
   /* get internal properties as list of numbers 0-100 */
@@ -378,12 +375,9 @@ let right_eye_pos = segment_average(positions.right_eye);
     settings[1] = map(this.head_Type, 0, 2, 0, 100); //head draw
     settings[2] = map(this.mouth_size, 0, 5, 0, 50); //mouth size Y
     settings[3] = map(this.mouth_sizeX, 0, 1, 0, 50); //mouth size X
-    settings[4] = map(this.pupil_Size, 0.4, 0.2, 1, 100); // pupil size
-    settings[5] = map(this.cheeck, 1, 2, 0, 100); //cheeck detail (female only)
-    settings[6] = map(this.Nose, 1, 2, 0, 100); //nose Y
-    settings[7] = map(this.eyebrow, 1, 2, 0, 100); //eyebrow Y
-    settings[8] = map(this.Face_detail, 0, 1, 0, 100); //male or female details
-    settings[9] = map(this.pupX, 0, 5, 0, 50); //pupil X
+    settings[4] = map(this.pupil_Size, 0.1, 0.2, 1, 100); // pupil size
+    settings[5] = map(this.Face_detail, 0, 1, 0, 100); //male or female details
+    settings[6] = map(this.pupX, 0, 5, 0, 50); //pupil X
     return settings;
   }
 }
