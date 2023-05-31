@@ -93,7 +93,7 @@ let nose_middle = positions.nose_tip[0];
 
 ///////////////////////////////// HEAD END (slider 1)/////////////////////////////////
 
-/////////////////////////////////FACE DETAIL (slider 9)/////////////////////////////////
+/////////////////////////////////FACE DETAIL (slider 6)/////////////////////////////////
 
 
 /////////////////////ALIENS/////////////////////
@@ -101,17 +101,30 @@ if (this.SkinType == 1){
 
   /////////FEMALE detail (eye decals) /////////
   if(this.Face_detail == 0){
-    line(-0.85,-1,-0.85,0.2);//left side
-    line(0.85,-1,0.85,0.2);//right side
+    fill(this.Alien_secondary);
+    circle(1,-0.4,0.2); //right
+    circle(1,0 ,0.2); //right
+    circle(1,0.4 ,0.2); //right
+
+    circle(-1,-0.4,0.2); //left
+    circle(-1,0 ,0.2); //left
+    circle(-1,0.4 ,0.2); //left
   }
 
   /////////MALE detail (eye paint) /////////
   else if(this.Face_detail == 1){
     fill(this.Alien_secondary); // pink
-    push();
-    strokeWeight(0);
-    rect(-1.33,-1,2.85,0.1);
-    pop();
+    circle(-0.8,-0.1,0.2);
+    circle(-1,-0.3,0.2);
+    circle(-0.6,-0.3,0.2);
+    circle(-0.8,-0.5,0.2);
+
+    circle(0.8,-0.1,0.2);
+    circle(1,-0.3,0.2);
+    circle(0.6,-0.3,0.2);
+    circle(0.8,-0.5,0.2);
+    // line(-0.85,-1,-0.85,0.2);//left side
+    // line(0.85,-1,0.85,0.2);//right side
   }
 }
 
@@ -136,7 +149,7 @@ if (this.SkinType == 0){
   }
 }
 
-/////////////////////////////////FACE DETAIL END (slider 9)/////////////////////////////////
+/////////////////////////////////FACE DETAIL END (slider 6 )/////////////////////////////////
 
 /////////////////////////////////HAIR (slider 2)/////////////////////////////////
 
@@ -207,12 +220,6 @@ if (this.SkinType == 0){
   /////////MALE HAIR (power cap)/////////
   else if(this.head_Type == 1){
     fill(this.Cyborg_secondary);
-    //strokeWeight(0.1);
-    //line(-1.8,-1.8,0,-2.1); //left line
-    //line(1.8,-1.8,0,-2.1); //right line
-    //line
-    //line(0,-3,0,-2.2); //top line
-    //strokeWeight(0.15);
 
     fill(this.Cyborg_secondary);
     ellipse(0,-2,0.5,0.5); //main ellipse
@@ -281,24 +288,26 @@ if (this.SkinType == 0){
 
 
 ///////////////////////////////// EYEBROWS (slider 8)/////////////////////////////////
-    fill( this.eyebrowColour);
-    stroke( this.eyebrowColour);
-    strokeWeight(0.08);
+//THIS IS KEPT IN THE CODE FOR FUTURE STUDY
+    // fill( this.eyebrowColour);
+    // stroke( this.eyebrowColour);
+    // strokeWeight(0.08);
 
     //this.draw_segment(positions.left_eyebrow);
     //this.draw_segment(positions.right_eyebrow);
 
-///////////////////////////////// EYEBROWS END (slider 8)/////////////////////////////////
+///////////////////////////////// EYEBROWS END /////////////////////////////////
 
 
 //////////////draw the chin segment using points//////////////
-    fill(this.chinColour);
-    stroke(this.chinColour);
+//THIS IS KEPT IN THE CODE FOR FUTURE STUDY
+    //fill(this.chinColour);
+    //stroke(this.chinColour);
     //this.draw_segment(positions.chin);
 
 ///////////////////////////////// NOSE (slider 7)/////////////////////////////////
-    fill(this.Cyborg_tertiary); //grey
-    stroke(this.Cyborg_tertiary);//grey
+    //fill(this.Cyborg_tertiary); //grey
+    //stroke(this.Cyborg_tertiary);//grey
     //this.draw_segment(positions.nose_bridge);
     // this.draw_segment(positions.nose_tip);
 
@@ -306,10 +315,11 @@ if (this.SkinType == 0){
 
 
 ///////////////////////////////// LIPS /////////////////////////////////    
-    strokeWeight(0.03);
+    //THIS IS KEPT IN THE CODE FOR FUTURE STUDY
+    //strokeWeight(0.03);
 
-    fill(this.lipColour);
-    stroke(this.lipColour);
+    //fill(this.lipColour);
+   // stroke(this.lipColour);
     //this.draw_segment(positions.top_lip); //default dotted lips
     //this.draw_segment(positions.bottom_lip); //defult dotted lips
 
