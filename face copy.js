@@ -33,7 +33,6 @@ function Face() {
   this.num_eyes = 2;    // can be either 1 (cyclops) or 2 (two eyes)
   this.eye_shift = -1;   // range is -10 to 10
   this.mouth_size = 1;  // range is 0.5 to 8
-
   this.chinColour = [153, 153, 51]
   this.lipColour = [136, 68, 68]
   this.mouthColour = [201, 44, 38] //red
@@ -46,6 +45,7 @@ function Face() {
   this.Cyborg_primary = [210, 210, 210]; //grey
   this.Cyborg_secondary = [28, 182, 182]; //blue
   this.Cyborg_tertiary = [62, 69, 69]; //other grey
+
   
   /*
    * Draw the face with position lists that include:
@@ -62,6 +62,11 @@ let face_chin = positions.chin[8];
 let face_right = positions.chin[16];
 let right_cheek = positions.chin[2];
 let left_cheek = positions.chin[4];
+
+let nose_top = positions.nose_bridge[0];
+let nose_bottom = positions.nose_bridge[3];
+let nose_middle = positions.nose_tip[0];
+
 
         if(this.SkinType == 1) {
           strokeWeight(0.2);
@@ -97,8 +102,8 @@ if (this.SkinType == 1){
 
   /////////FEMALE detail (eye decals) /////////
   if(this.Face_detail == 0){
-    line(-0.85,-1,-0.85,1.5);//left side
-    line(0.85,-1,0.85,1.5);//right side
+    line(-0.85,-1,-0.85,0.2);//left side
+    line(0.85,-1,0.85,0.2);//right side
   }
 
   /////////MALE detail (eye paint) /////////
@@ -106,28 +111,29 @@ if (this.SkinType == 1){
     fill(this.Alien_secondary); // pink
     push();
     strokeWeight(0);
-    rect(-1.93,-1,3.75,0.1);
+    rect(-1.33,-1,2.85,0.1);
     pop();
   }
-
-
 }
 
 /////////////////////CYBORGS/////////////////////
 if (this.SkinType == 0){
 
-  /////////FEMALE detail/////////
+  /////////FEMALE detail (second eye)/////////
   if(this.Face_detail == 0){
-  
+  fill(this.Cyborg_secondary);
+  line(-0.85,-0.8,-0.85,-0.5);//left
+  line(0.9,-0.8,0.9,-0.5); //right
+  circle(0.9,-0.37,0.2);//right
+  ellipse(-0.85,-0.37,0.2);//right
 
   }
 
   /////////MALE Detail/////////
   else if(this.Face_detail == 1){
-
+    
     
   }
-
 }
 
 /////////////////////////////////FACE DETAIL END (slider 9)/////////////////////////////////
@@ -276,8 +282,9 @@ if (this.SkinType == 0){
 ///////////////////////////////// NOSE (slider 7)/////////////////////////////////
     fill(this.Cyborg_tertiary); //grey
     stroke(this.Cyborg_tertiary);//grey
-    this.draw_segment(positions.nose_bridge);
-    this.draw_segment(positions.nose_tip);
+    //this.draw_segment(positions.nose_bridge);
+    // this.draw_segment(positions.nose_tip);
+
 ///////////////////////////////// NOSE END (slider 7) /////////////////////////////////
 
 
@@ -309,7 +316,7 @@ let right_eye_pos = segment_average(positions.right_eye);
       stroke(0);
       fill(this.Alien_secondary); //pink
       ellipse(-0.85,-0.9,this.pupil_Size,this.pupil_Size);
-      ellipse(0.85,-0.9,this.pupil_Size,this.pupil_Size);
+      ellipse(0.75,-0.9,this.pupil_Size,this.pupil_Size);
 
 ////////////////CYBORG////////////////
     } else if (this.SkinType == 0) {
