@@ -4,10 +4,10 @@
  */  
 
 // remove this or set to false to enable full program (load will be slower)
-var DEBUG_MODE = false;
+var DEBUG_MODE = false ;
 
 // this can be used to set the number of sliders to show
-var NUM_SLIDERS = 7;
+var NUM_SLIDERS = 6;
 
 const stroke_color = [95, 52, 8];
 
@@ -99,7 +99,7 @@ let nose_middle = positions.nose_tip[0];
 /////////////////////ALIENS/////////////////////
 if (this.SkinType == 1){
 
-  /////////FEMALE detail (eye decals) /////////
+  /////////FEMALE detail (eye pores) /////////
   if(this.Face_detail == 0){
     fill(this.Alien_secondary);
     circle(1,-0.4,0.2); //right
@@ -111,18 +111,21 @@ if (this.SkinType == 1){
     circle(-1,0.4 ,0.2); //left
   }
 
-  /////////MALE detail (eye paint) /////////
+  /////////MALE detail (eye pores) /////////
   else if(this.Face_detail == 1){
     fill(this.Alien_secondary); // pink
-    circle(-0.8,-0.1,0.2);
-    circle(-1,-0.3,0.2);
-    circle(-0.6,-0.3,0.2);
-    circle(-0.8,-0.5,0.2);
 
-    circle(0.8,-0.1,0.2);
-    circle(1,-0.3,0.2);
-    circle(0.6,-0.3,0.2);
-    circle(0.8,-0.5,0.2);
+    //Left Side
+    circle(-0.8,-0.1,0.1); //bottom
+    circle(-1,-0.3,0.1); //left
+    circle(-0.6,-0.3,0.1); //right
+    circle(-0.8,-0.5,0.1); //top
+
+    //right size
+    circle(0.8,-0.1,0.1); //
+    circle(1,-0.3,0.1); //
+    circle(0.6,-0.3,0.1); //
+    circle(0.8,-0.5,0.1); //
     // line(-0.85,-1,-0.85,0.2);//left side
     // line(0.85,-1,0.85,0.2);//right side
   }
