@@ -43,12 +43,6 @@ function Face() {
   this.Cyborg_primary = [210, 210, 210]; //grey
   this.Cyborg_secondary = [28, 182, 182]; //blue
   this.Cyborg_tertiary = [62, 69, 69]; //other grey
- 
-  /*
-   * Draw the face with position lists that include:
-   *    chin, right_eye, left_eye, right_eyebrow, left_eyebrow
-   *    bottom_lip, top_lip, nose_tip, nose_bridge, 
-   */ 
 
   this.draw = function(positions) {
     console.log();
@@ -390,7 +384,7 @@ let right_eye_pos = segment_average(positions.right_eye);
     this.SkinType = int(map(settings[0], 0, 100, 0, 1)); // metal or skin
     this.head_Type = int(map(settings[1], 0, 100, 0, 2)); // head draw
     this.mouth_size = map(settings[2], 0, 100, 0.5, 4); // Mouth Y
-    this.mouth_sizeX = map(settings[3], 0, 100, 0, 1); // mouth X
+    this.mouth_sizeX = map(settings[3], 0, 100, 0, 1.8); // mouth X
     this.pupil_Size = map(settings[4], 0, 100, 0.1, 0.2);// pupil size
     this.Face_detail = int(map(settings[5], 0, 100, 0, 1)); //male or female details
     this.pupX = map(settings[6], 0, 100, 0.5, 4); //pupil X
@@ -401,8 +395,8 @@ let right_eye_pos = segment_average(positions.right_eye);
     let settings = new Array(3);
     settings[0] = map(this.SkinType, 0, 1, 0, 100); //metal or skin
     settings[1] = map(this.head_Type, 0, 2, 0, 100); //head draw
-    settings[2] = map(this.mouth_size, 0, 5, 0, 50); //mouth size Y
-    settings[3] = map(this.mouth_sizeX, 0, 1, 0, 50); //mouth size X
+    settings[2] = map(this.mouth_size, 0, 2, 0, 50); //mouth size Y
+    settings[3] = map(this.mouth_sizeX, 0, 1.8, 0, 50); //mouth size X
     settings[4] = map(this.pupil_Size, 0.1, 0.2, 1, 100); // pupil size
     settings[5] = map(this.Face_detail, 0, 1, 0, 100); //male or female details
     settings[6] = map(this.pupX, 0, 5, 0, 50); //pupil X
