@@ -7,10 +7,9 @@
 ## There's something unusual about the elite
 There are instances when those who possess wealth and authority may seem disconnected from the realities of everyday life. This can make their behavior appear mechanical or even otherworldly to the average person. Could it be plausible that the government knows and is keeping this knowledge hidden from the public? By running this codel, perhaps we will witness the truth of the upper class, and uncover their true identities.
 
+This code itself traces human faces within images and will print a face will the specific details based off features it has been trained to pick up on through looking through distinct faces and understanding what makes them different. 
 
 
 note - 
-Face copy.js is the main face
-face.js is project 2 face
 (Untill proven otherwise, I dont actually belive theyre aliens and cyborgs and its simply parody)
 
